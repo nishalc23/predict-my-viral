@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { TrendingUp, Zap, BarChart3 } from "lucide-react";
 
-export const Hero = () => {
+interface HeroProps {
+  onTryPrediction?: () => void;
+}
+
+export const Hero = ({ onTryPrediction }: HeroProps) => {
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated background gradients */}
@@ -28,7 +32,12 @@ export const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-          <Button variant="viral" size="lg" className="text-lg px-8 py-6">
+          <Button 
+            variant="viral" 
+            size="lg" 
+            className="text-lg px-8 py-6"
+            onClick={onTryPrediction}
+          >
             <BarChart3 className="w-5 h-5" />
             Try Viral Prediction
           </Button>

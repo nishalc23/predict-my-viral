@@ -66,7 +66,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Hero />
+      <Hero onTryPrediction={scrollToUpload} />
       
       <div id="upload-section" className="py-16 px-6">
         <div className="max-w-4xl mx-auto space-y-8">
