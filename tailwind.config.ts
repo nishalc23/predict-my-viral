@@ -24,6 +24,10 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				'viral-purple': 'hsl(var(--viral-purple))',
+				'viral-pink': 'hsl(var(--viral-pink))',
+				'viral-blue': 'hsl(var(--viral-blue))',
+				'viral-cyan': 'hsl(var(--viral-cyan))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -84,11 +88,37 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'viral-pulse': {
+					'0%, 100%': { 
+						transform: 'scale(1)',
+						filter: 'brightness(1)'
+					},
+					'50%': { 
+						transform: 'scale(1.05)',
+						filter: 'brightness(1.1)'
+					}
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0px)' },
+					'50%': { transform: 'translateY(-10px)' }
+				},
+				'shimmer': {
+					'0%': { backgroundPosition: '200% 0' },
+					'100%': { backgroundPosition: '-200% 0' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'viral-pulse': 'viral-pulse 2s ease-in-out infinite',
+				'float': 'float 3s ease-in-out infinite',
+				'shimmer': 'shimmer 2s linear infinite'
+			},
+			backgroundImage: {
+				'gradient-viral': 'var(--gradient-viral)',
+				'gradient-social': 'var(--gradient-social)',
+				'gradient-success': 'var(--gradient-success)'
 			}
 		}
 	},
