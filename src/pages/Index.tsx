@@ -27,32 +27,6 @@ const Index = () => {
     setPrediction(null);
   };
 
-  const generateMockPrediction = () => {
-    // Mock AI prediction with realistic data
-    const baseScore = Math.floor(Math.random() * 40) + 30; // 30-70 base
-    const captionBonus = caption.length > 50 ? Math.floor(Math.random() * 20) + 10 : 0;
-    const viralScore = Math.min(95, baseScore + captionBonus);
-    
-    const estimatedReach = viralScore * 1000 + Math.floor(Math.random() * 50000);
-    const estimatedEngagement = Math.floor(estimatedReach * (viralScore / 100) * 0.1);
-    
-    const insights = [
-      "Strong visual appeal detected - content has eye-catching elements",
-      `Caption length (${caption.length} chars) ${caption.length > 100 ? 'is optimal for engagement' : 'could be expanded for better reach'}`,
-      "Trending topic alignment score: " + Math.floor(Math.random() * 50 + 50) + "/100",
-      `${viralScore > 70 ? 'High' : viralScore > 50 ? 'Moderate' : 'Low'} emotional resonance predicted`,
-      "Optimal posting time: 6-9 PM on weekdays for maximum reach"
-    ];
-
-    return {
-      viralScore,
-      confidence: Math.floor(Math.random() * 20) + 75,
-      estimatedReach,
-      estimatedEngagement,
-      insights: insights.slice(0, Math.floor(Math.random() * 2) + 3),
-      category: viralScore >= 70 ? 'High Viral Potential' : viralScore >= 50 ? 'Moderate Potential' : 'Low Potential'
-    };
-  };
 
   const handlePredict = async () => {
     if (!selectedFile || !caption.trim()) {
@@ -67,17 +41,23 @@ const Index = () => {
     setIsLoading(true);
     setShowResults(true);
 
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    // TODO: Replace with actual API call to your Flask backend
+    // const formData = new FormData();
+    // formData.append('file', selectedFile);
+    // formData.append('caption', caption);
+    // 
+    // try {
+    //   const response = await fetch('/api/predict', {
+    //     method: 'POST',
+    //     body: formData
+    //   });
+    //   const result = await response.json();
+    //   setPrediction(result);
+    // } catch (error) {
+    //   console.error('Prediction failed:', error);
+    // }
     
-    const mockPrediction = generateMockPrediction();
-    setPrediction(mockPrediction);
     setIsLoading(false);
-
-    toast({
-      title: "Prediction Complete!",
-      description: `Your content has a ${mockPrediction.viralScore}% viral potential score.`,
-    });
   };
 
   const scrollToUpload = () => {
